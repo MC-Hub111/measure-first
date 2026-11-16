@@ -55,6 +55,8 @@ time, because they are found late.
 - **Stores:** a list of at most 400 findings in the session's plugin state. Each
   finding is a rule id, a short excerpt of up to 160 characters, a turn id and a
   time. Nothing is written anywhere else.
+- **Hooks:** it listens to tool calls and to the start and end of each turn, and
+  it adds one command, `/measure-first`, which prints the findings so far.
 - **Changes:** it can refuse a Bash command (guards 1 and 2). It never edits a
   command, a file or a permission setting.
 
@@ -139,8 +141,8 @@ Two further fixes since the sections below were written, both found by replay:
   then `grep -rc pytest . | head`, `which make | cat`, `git log -- make | head`
   and `echo go | cat`. Each earlier fix removed one way of naming a gate. The
   matcher now asks whether a gate is in command position: the first word, or
-  what a wrapper (`sudo`, `time`), interpreter (`python -m`, `node`) or runner
-  (`uv run`, `npx`) is handed. G5's "did a gate run" probe uses the same test.
+  what a wrapper (`sudo`, `time`), an interpreter (`python -m`, `node`) or a
+  package runner is handed. G5's "did a gate run" probe uses the same test.
   Known limit: a custom runner such as `node test/run.mjs` is not recognised.
 - **A quoted phrase is not a claim.** Three of G5's ten flags were the phrase
   inside quotation marks or a code span while describing a guard. Code spans and

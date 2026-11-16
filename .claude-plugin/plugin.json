@@ -6,5 +6,6 @@
   "license": "MIT",
   "author": {
     "name": "Martin Cohen"
-  }
+  },
+  "icon": ".claude-plugin/icon.png"
 }

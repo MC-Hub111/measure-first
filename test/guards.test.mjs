@@ -2,9 +2,9 @@ import {readFileSync} from 'node:fs'
 import {ABSENCE,GREEN,ESCAPE,staleStatusRead,needsPipefail,distinctiveNumbers,isSourced,commandOf,hasGate,claimText,sweepingAdd}
   from './_logic.mjs'
 
-let pass=0, fail=0
+let okCount=0, badCount=0
 const t=(name,got,want)=>{ const ok=JSON.stringify(got)===JSON.stringify(want)
-  ok?pass++:fail++; if(!ok) console.log(`  FAIL ${name}\n       got ${JSON.stringify(got)} want ${JSON.stringify(want)}`) }
+  ok?okCount++:badCount++; if(!ok) console.log(`  FAIL ${name}\n       got ${JSON.stringify(got)} want ${JSON.stringify(want)}`) }
 // The shipped function, not a retyped copy of its pattern.
 const gitSweep = c => sweepingAdd(c) && !ESCAPE.test(c)
 
@@ -158,5 +158,5 @@ t('no GATE/SEARCH scan over joined toolNames survives',
 t('both per-turn flags reset in turn.start',
   /searchedTurn = false\s*\n\s*gateTurn = false/.test(turnStartBody), true)
 
-console.log(`\n${pass} passed, ${fail} failed`)
-process.exit(fail?1:0)
+console.log(`\n${okCount} passed, ${badCount} failed`)
+process.exit(badCount?1:0)
