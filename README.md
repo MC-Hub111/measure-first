@@ -43,6 +43,24 @@ time, because they are found late.
 - A flag means "check this". It is not proof of a mistake.
 - It does not read or judge your code.
 
+## What it runs, reads and stores
+
+- **Runs:** one hooks module, `hooks/register.ts`, inside Claude Code. It starts no
+  processes, opens no files and makes no network requests. Nothing leaves your
+  machine.
+- **Reads:** the text of each Bash command before it runs, the output of tool
+  calls, your prompts, and Claude's final answer. It holds these in memory for the
+  session (at most the last 400,000 characters of tool output and 200,000 of
+  prompts) so it can trace a number back to where it came from.
+- **Stores:** a list of at most 400 findings in the session's plugin state. Each
+  finding is a rule id, a short excerpt of up to 160 characters, a turn id and a
+  time. Nothing is written anywhere else.
+- **Changes:** it can refuse a Bash command (guards 1 and 2). It never edits a
+  command, a file or a permission setting.
+
+The `test/` and `evals/` folders are for development. Nothing in them runs when the
+mod is installed.
+
 ## Install
 
 At the prompt of a Claude Code terminal session:
@@ -60,7 +78,7 @@ claude plugin install measure-first --marketplace MC-Hub111/measure-first
 In the desktop app: click + next to the prompt box, then Plugins, Add marketplace
 with `MC-Hub111/measure-first`, then Add plugin.
 
-Needs Claude Code 2.1.325 or later.
+Written and tested on Claude Code 2.1.325.
 
 ---
 

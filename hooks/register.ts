@@ -411,7 +411,7 @@ export const register: Register = on => {
       if (loose.length) {
         hits.push({
           rule: 'G4',
-          detail: `${loose.length} number(s) in no tool result this turn: ${clip(loose.slice(0, 6).join(', '), 90)}`,
+          detail: `${loose.length} number(s) in no tool result this session: ${clip(loose.slice(0, 6).join(', '), 90)}`,
           turnId,
           at: Date.now(),
         })
