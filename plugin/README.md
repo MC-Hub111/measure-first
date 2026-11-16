@@ -71,11 +71,7 @@ At the prompt of a Claude Code terminal session:
 /plugin install measure-first --marketplace MC-Hub111/measure-first
 ```
 
-Answer `y` to add the marketplace, then choose a scope. From a shell instead:
-
-```bash
-claude plugin install measure-first --marketplace MC-Hub111/measure-first
-```
+Answer `y` to add the marketplace, then choose a scope.
 
 In the desktop app: click + next to the prompt box, then Plugins, Add marketplace
 with `MC-Hub111/measure-first`, then Add plugin.
