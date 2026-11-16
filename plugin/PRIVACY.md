@@ -11,4 +11,4 @@ measure-first collects nothing and sends nothing.
   machine. Nothing is written anywhere else.
 - The author receives no data of any kind from your use of the mod.
 
-Questions: open an issue at https://github.com/MC-Hub111/measure-first/issues
+Questions: open an issue on the mod's GitHub repository, MC-Hub111/measure-first.

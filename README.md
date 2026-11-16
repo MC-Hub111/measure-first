@@ -9,7 +9,8 @@ says "nothing uses this", quotes a number, or says the tests are green with
 nothing behind it.
 
 The full description, what it runs and stores, and the measurements are in
-[plugin/README.md](plugin/README.md).
+[plugin/README.md](plugin/README.md). It collects nothing and sends nothing: see
+[Privacy](plugin/PRIVACY.md).
 
 ## Install
 

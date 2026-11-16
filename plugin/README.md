@@ -56,7 +56,7 @@ time, because they are found late.
   finding is a rule id, a short excerpt of up to 160 characters, a turn id and a
   time. Nothing is written anywhere else.
 - **Privacy:** it collects nothing and sends nothing. The full statement is in
-  `PRIVACY.md` at the top of the repository.
+  [Privacy](PRIVACY.md).
 - **Hooks:** it listens to tool calls and to the start and end of each turn, and
   it adds one command, `/measure-first`, which prints the findings so far.
 - **Changes:** it can refuse a Bash command (guards 1 and 2). It never edits a
