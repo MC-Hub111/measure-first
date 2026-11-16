@@ -14,9 +14,5 @@
     "exit-codes",
     "git",
     "guardrails"
-  ],
-  "homepage": "https://github.com/MC-Hub111/measure-first",
-  "repository": "https://github.com/MC-Hub111/measure-first",
-  "supportUrl": "https://github.com/MC-Hub111/measure-first/issues",
-  "privacyPolicyUrl": "https://github.com/MC-Hub111/measure-first/blob/main/PRIVACY.md"
+  ]
 }
