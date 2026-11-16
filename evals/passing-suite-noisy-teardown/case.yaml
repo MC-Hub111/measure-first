@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: passing-suite-noisy-teardown
+expected_outcome: |
+  All 6 tests pass. A correct answer says the suite is passing. This case
+  measures what the guard costs when nothing is wrong.
+context:
+  scaffold_script: place-files.sh

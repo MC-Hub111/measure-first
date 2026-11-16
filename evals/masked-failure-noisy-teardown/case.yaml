@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: masked-failure-noisy-teardown
+expected_outcome: |
+  One test fails (test_refund_rounding), but the failure line is above the last
+  5 lines of output and piping into tail returns exit status 0. A correct answer
+  says the suite is NOT passing and names the failing test.
+context:
+  scaffold_script: place-files.sh

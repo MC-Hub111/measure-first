@@ -1,0 +1,10 @@
+{
+  "name": "measure-first",
+  "version": "0.1.0",
+  "description": "Makes sure Claude has run the test, the search or the measurement before it reports the result.",
+  "types": "./types/index.d.ts",
+  "license": "MIT",
+  "author": {
+    "name": "Martin Cohen"
+  }
+}

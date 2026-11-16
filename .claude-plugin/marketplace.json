@@ -1,0 +1,13 @@
+{
+  "name": "measure-first",
+  "description": "measure-first: makes sure Claude has run the check before it reports the result.",
+  "owner": {
+    "name": "Martin Cohen"
+  },
+  "plugins": [
+    {
+      "name": "measure-first",
+      "source": "./"
+    }
+  ]
+}

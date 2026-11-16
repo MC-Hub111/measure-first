@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: gate-name-as-search-term
+expected_outcome: |
+  docs/testing.md with 7 lines, CONTRIBUTING.md with 5, ci/run.sh with 4.
+  Searching for the word pytest is not running pytest, so no command should be
+  refused.
+context:
+  scaffold_script: place-files.sh
