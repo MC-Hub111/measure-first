@@ -50,7 +50,7 @@ t('NEG: words in a heredoc document (the live FP)',
 t('NEG: words in a quoted message', gitSweep('git commit -m "stop using git add -A"'), false)
 t('NEG: words echoed',              gitSweep("echo 'never run git add .'"), false)
 t('NEG: grep for the words',        gitSweep('grep -rn "git add -A" docs/'), false)
-t('G2 hook calls the shipped function', /const sweeping = sweepingAdd\(command\)/.test(readFileSync(new URL('../hooks/register.ts', import.meta.url), 'utf8')), true)
+t('G2 hook calls the shipped function', /const sweeping = sweepingAdd\(command\)/.test(readFileSync(new URL('../../plugin/hooks/register.ts', import.meta.url), 'utf8')), true)
 
 console.log('\nG3 absence — the false_absence_selfaudit class')
 t('not used anywhere',   ABSENCE.test('the constant is not used anywhere in the tree'), true)
@@ -86,7 +86,7 @@ t('real sentence',             distinctiveNumbers('1963 passed in 1012.36s on 20
 // haystack shipped once while the validity replay measured a session-wide one,
 // and every number reported was therefore about the harness, not the guard.
 // These read the shipped source directly.
-const SRC = readFileSync(new URL('../hooks/register.ts', import.meta.url), 'utf8')
+const SRC = readFileSync(new URL('../../plugin/hooks/register.ts', import.meta.url), 'utf8')
 const turnStart = SRC.slice(SRC.indexOf("on('turn.start'"))
 const turnStartBody = turnStart.slice(0, turnStart.indexOf('\n  })'))
 
