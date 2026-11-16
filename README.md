@@ -98,7 +98,7 @@ is paying attention — which is the point, because the failure mode is inattent
 
 | id | fires on | the defect it came from |
 |----|----------|--------------------------|
-| G1 | a gate piped into `tee`/`tail`/`head`/`wc`… with no `pipefail`, or `$?` read after an intervening command | `make check \| tail` returned 0 while the suite was failing; a red `make validate-docs` was relayed as passing because `; echo $?` read the wrong command's status |
+| G1 | a gate piped into `tee`/`tail`/`head`/`wc`… with no `pipefail`, or the exit status read after an intervening command | `make check \| tail` returned 0 while the suite was failing; a red `make validate-docs` was relayed as passing because the exit-status echo read the wrong command's status |
 | G2 | `git add -A`, `git add .`, `git add --all` | a locked pre-registration was overwritten by a sweeping `git add` in a tree with concurrent sessions |
 | G3 | an absence claim ("not used anywhere", "no callers") with no search run that turn | "word X is not used anywhere" was false in 6 of ~14 files it was claimed about |
 | G4 | numbers in the answer that appear in no tool result and no prompt anywhere in the session | most published figures in one audit traced to nothing on disk |
@@ -227,7 +227,7 @@ loses `.venv/bin/pytest`.
 
 Phrase recall, against a deliberately over-wide net with every extra hit
 adjudicated by hand: G5 missed 5 real claims (`all green`, `all passing`,
-`pass cleanly`, `all six generators clean`) — now **15/15**. G3 missed
+"pass cleanly", "all six generators clean") — now **15/15**. G3 missed
 `no producer anywhere`, `nothing live imports`, bare `doesn't exist`,
 `zero such rows`; those are now covered, and the remaining wide-net hits are the
 net's own noise (`not a judgement call`, `no further work`).
@@ -262,7 +262,7 @@ Both found by the live guard firing on its author, both now test cases:
   was counted as a gate invocation. The gate is now looked for in command position,
   after `VAR=value` prefixes are stripped (`commandOf`).
 - heredoc bodies were split into "commands", so a `make` inside an inline Python script
-  counted, and put a correct `$?` read two commands from its gate. `segments()` now skips
+  counted, and put a correct exit-status read two commands from its gate. `segments()` now skips
   a heredoc body whole.
 
 ## False positives, stated up front
@@ -282,13 +282,16 @@ appended, never rewritten, and survive a reload.
 ## Testing it
 
 ```bash
-python3 test/extract.py && node test/guards.test.mjs
+python3 test/extract.py
+node test/guards.test.mjs
 ```
+
+Run the first line, then the second.
 
 `extract.py` pulls the guards' source out of `hooks/register.ts` so the test exercises the
 **shipped text**, not a copy of it. 105 cases: each rule's real defect as a positive, and
 the near-misses that must not fire as negatives (`git add a.txt`, "there are no obvious
-problems", "the function passes a buffer", a bare `echo $?`).
+problems", "the function passes a buffer", a bare echo of the exit status).
 
 A separate whole-module syntax check (`as const` and the type annotations stripped, then
 parsed) covers the `register` body the extracted span does not reach; it is itself
